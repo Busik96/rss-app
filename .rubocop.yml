@@ -1,0 +1,51 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  Exclude:
+    - 'bin/*'
+    - 'db/schema.rb'
+    - 'db/seeds.rb'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'config/**/*'
+    - 'tmp/**/*'
+    - 'lib/**/*'
+    - 'db/migrate/*'
+
+Style/Documentation:
+  Enabled: false
+
+# Custom cops configuration
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Guardfile'
+    - 'config/environments/*'
+    - 'app/admin/*'
+    - 'app/controllers/api/**/*'
+    - 'spec/**/*'
+  CountComments: false
+  Max: 30
+  ExcludedMethods: ['describe', 'context', 'params', 'requires', 'optional']
+
+Metrics/MethodLength:
+  Max: 15
+
+# Commonly used screens these days easily fit more than 80 characters.
+Layout/LineLength:
+  Max: 110
+
+# Explicitly specifying it for hound
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+# Explicitly specifying it for hound
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: no_comma
+
+# Explicitly specifying it for hound
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: no_comma
+
+# Explicitly specifying it for hound
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: no_comma

@@ -1,0 +1,21 @@
+@import '~bootstrap/scss/functions';
+@import "~bootstrap/scss/bootstrap";
+$fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html, body, main {
+  min-height: 100vh;
+}
+
+body {
+  font-family: 'Font Awesome 5 Free';
+}

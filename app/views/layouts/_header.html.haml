@@ -1,0 +1,23 @@
+%header
+  %nav.navbar.navbar-expand-lg.navbar-light.bg-nav
+    %button.navbar-toggler{"aria-controls" => "navbarTogglerDemo03", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarTogglerDemo03", "data-toggle" => "collapse", :type => "button"}
+      %span.navbar-toggler-icon
+    - if user_signed_in?
+      = link_to ' RSS App',  class: 'navbar-brand ml-3 fas fa-rss-square fa-lg '
+    - else
+      = link_to ' RSS App', root_path, class: 'navbar-brand ml-3 fas fa-rss-square fa-lg '
+    #navbarTogglerDemo03.collapse.navbar-collapse.justify-content-end
+      %ul.navbar-nav.my-2.my-lg-0
+        - if user_signed_in?
+          %li.nav-item
+            .btn-group
+              %span.center-content.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
+                %i.fas.fa-user-circle.pr-2
+                = current_user.name || current_user.email
+              .dropdown-menu.dropdown-menu-right
+                = link_to 'Edit profile', edit_user_registration_path, class: 'dropdown-item'
+                %hr/
+                = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+        - else
+          %li.nav-item
+            = link_to 'Log in', new_user_session_path, class: 'btn btn-outline-success'

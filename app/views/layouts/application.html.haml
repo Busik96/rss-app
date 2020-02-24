@@ -1,0 +1,16 @@
+!!!
+%html
+  %head
+    %title Rss App
+    = csrf_meta_tags
+    = csp_meta_tag
+    %link{href: "favicon/favicon.ico", rel: "icon"}
+    = stylesheet_pack_tag 'custom', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body.d-flex.flex-column
+    = render 'layouts/header'
+    %main
+      .container-fluid.min-vh-100
+        = render partial: 'layouts/flash', flash: flash
+        = yield
+    = render 'layouts/footer'

@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-# frozen_string_lireral: true
-
 class RegistrationsController < Devise::RegistrationsController
   def new
     redirect_to root_url
@@ -9,7 +7,6 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     build_resource(sign_up_params)
-
     resource.save
     yield resource if block_given?
     if resource.persisted?

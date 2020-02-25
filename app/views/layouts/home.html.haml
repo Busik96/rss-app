@@ -1,0 +1,59 @@
+!!!
+%html
+  %head
+    %title Rss App
+    = csrf_meta_tags
+    = csp_meta_tag
+    %link{href: "favicon/favicon.ico", rel: "icon"}
+    = stylesheet_pack_tag 'custom', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  %body.d-flex.flex-column.home
+    .home-page.no-gutters
+      .container-fluid
+        .row
+          .col-12
+            %header.pt-3
+              %nav.nav.justify-content-between.align-items-center
+                .nav-item
+                  %span.logo
+                    .fas.fa-rss-square.fa-lg
+                    = link_to ' RSS App', root_path, class: 'navbar-brand'
+                - if user_signed_in?
+                  .nav-item
+                    .btn.btn-group.btn-primary
+                      %span.center-content.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown"}
+                        %i.fas.fa-user-circle.pr-2
+                        = current_user.name || current_user.email
+                      .dropdown-menu.dropdown-menu-right
+                        = link_to 'Go to app!', root_path , class: 'dropdown-item'
+                        %hr/
+                        = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
+                - else
+                  .nav-item
+                    = link_to 'Log in', new_user_session_path, class: 'btn btn-primary'
+            %main.min-vh-100
+              .row.justify-content-center.align-items-center
+                - if user_signed_in?
+                  .col-sm-12.col-md-5.p-4
+                    .jumbotron
+                      = yield
+                - else
+                  .col-sm-12.col-md-5.p-4
+                    .jumbotron.text-center
+                      .h2.text-primary
+                        Welcome in our app!
+                      %p.p-4
+                        If you're used to reading RSS feeds, and you want to have your reader with you everywhere - don't hesitate and create an account right now!
+                      %i.fas.fa-sign-in-alt.fa-3x
+                  .col-sm-12.col-md-5.p-4
+                    .jumbotron
+                      = yield
+      %footer.d-flex
+        .container.p-4
+          .row
+            .col.text-center
+              %small.text-dark
+                Copyright © #{Date.current.cwyear} RssApp
+
+
+

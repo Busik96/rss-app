@@ -1,10 +1,13 @@
 @import '~bootstrap/scss/functions';
+@import '/_variables.scss';
 @import "~bootstrap/scss/bootstrap";
 $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import '~@fortawesome/fontawesome-free/scss/regular';
+@import '/home.scss';
+
 
 .center-content {
   display: flex;
@@ -17,5 +20,28 @@ html, body, main {
 }
 
 body {
-  font-family: 'Font Awesome 5 Free';
+  font-family: 'Comic Sans MS';
+}
+
+.logo {
+  color: #FF0000;
+  font-size: 30px;
+  text-shadow: 2px 2px 1px white;
+  a {
+    color: #FF0000;
+    font-size: 30px;
+  }
+}
+
+.external_login_icon {
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.divider {
+  margin: 1rem;
+  padding: 0 0.5rem;
+  border-right: 1px solid $gray-600;
+  border-left: 1px solid $gray-600;
 }

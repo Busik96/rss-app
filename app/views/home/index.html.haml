@@ -1,1 +1,23 @@
-Start project
+%h3.text-center Sign up
+= simple_form_for(@user, as: :user, url: registration_path(@user)) do |f|
+  .form-inputs
+    = f.input :name,
+      required: true,
+      autofocus: true,
+      input_html: { autocomplete: "name" }
+    = f.input :email,
+      required: true,
+      autofocus: true,
+      input_html: { autocomplete: "email" }
+    = f.input :password,
+      required: true,
+      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+      input_html: { autocomplete: "new-password" }
+    = f.input :password_confirmation,
+      required: true,
+      input_html: { autocomplete: "new-password" }
+  .form-actions.login-page.center-content
+    = f.button :submit, "Sign up", class: 'btn btn-primary'
+    %span.divider or
+    = link_to '', root_path, class: 'fab external_login_icon fa-facebook fa-2x'
+    = link_to '', root_path, class: 'pl-2 external_login_icon fab fa-github fa-2x'

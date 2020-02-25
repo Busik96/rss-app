@@ -1,12 +1,13 @@
-%h2 Resend unlock instructions
+%h3.text-center Resend unlock instructions
 = simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
   = f.error_notification
   = f.full_error :unlock_token
   .form-inputs
-    = f.input :email,                       |
-      required: true,                       |
-      autofocus: true,                      |
-      input_html: { autocomplete: "email" } |
+    = f.input :email,
+      required: true,
+      autofocus: true,
+      input_html: { autocomplete: "email" }
   .form-actions
-    = f.button :submit, "Resend unlock instructions"
-= render "devise/shared/links"
+    = f.button :submit, "Resend unlock instructions", class: 'btn btn-primary'
+.text-center
+  = render "devise/shared/links"

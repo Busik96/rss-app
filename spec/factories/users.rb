@@ -24,15 +24,12 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
-class User < ApplicationRecord
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable,
-         :omniauthable, omniauth_providers: %i[facebook github]
-  has_many :authorizations, dependent: :delete_all
 
-  validates :name, presence: true
-
-  def self.from_omniauth(auth)
-    ::Users::UserAuthorization.new.call(auth)
+FactoryBot.define do
+  factory :user do
+    confirmed_at { Faker::Date.backward(days: 14) }
+    name { Faker::Name.name }
+    email { Faker::Internet.free_email }
+    password { Faker::Internet.password }
   end
 end

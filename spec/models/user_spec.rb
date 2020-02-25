@@ -24,8 +24,15 @@
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
+
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'associations' do
+    it { is_expected.to have_many(:authorizations) }
+  end
+
+  describe 'validations' do
+    it { is_expected.to validate_presence_of(:name) }
+  end
 end

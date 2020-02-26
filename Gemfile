@@ -34,7 +34,7 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rspec', require: false
   gem 'shoulda-matchers'
-  gem 'simplecov', require: false
+  gem 'simplecov', '>= 0.18.5', require: false
 end
 
 group :development do

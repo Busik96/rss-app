@@ -189,7 +189,6 @@ GEM
       oauth2 (~> 1.1)
       omniauth (~> 1.9)
     orm_adapter (0.5.0)
-    pagy (3.7.3)
     parallel (1.19.1)
     parser (2.7.0.2)
       ast (~> 2.4.0)
@@ -199,8 +198,6 @@ GEM
     public_suffix (4.0.3)
     puma (4.3.1)
       nio4r (~> 2.0)
-    pundit (2.1.0)
-      activesupport (>= 3.0.0)
     rack (2.2.2)
     rack-protection (2.0.8.1)
       rack
@@ -300,7 +297,7 @@ GEM
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
-    simplecov (0.18.3)
+    simplecov (0.18.5)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
     simplecov-html (0.12.1)
@@ -362,12 +359,10 @@ DEPENDENCIES
   listen
   omniauth-facebook
   omniauth-github!
-  pagy
   pg
   pry!
   pry-rails
   puma (~> 4.1)
-  pundit
   rails (~> 6.0.2, >= 6.0.2.1)
   rails-controller-testing
   rspec-rails (= 4.0.0.beta3)
@@ -377,7 +372,7 @@ DEPENDENCIES
   shoulda-matchers
   sidekiq
   simple_form
-  simplecov
+  simplecov (>= 0.18.5)
   spring
   spring-watcher-listen
   turbolinks (~> 5)

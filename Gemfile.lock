@@ -262,6 +262,8 @@ GEM
       rspec-mocks (~> 3.8)
       rspec-support (~> 3.8)
     rspec-support (3.9.2)
+    rss (0.2.9)
+      rexml
     rubocop (0.80.0)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -366,6 +368,7 @@ DEPENDENCIES
   rails (~> 6.0.2, >= 6.0.2.1)
   rails-controller-testing
   rspec-rails (= 4.0.0.beta3)
+  rss
   rubocop
   rubocop-rspec
   sass-rails (>= 6)

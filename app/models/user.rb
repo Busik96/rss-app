@@ -29,6 +29,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: %i[facebook github]
   has_many :authorizations, dependent: :delete_all
+  has_many :user_feeds
 
   validates :name, presence: true
 

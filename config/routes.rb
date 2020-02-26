@@ -4,4 +4,6 @@ Rails.application.routes.draw do
     omniauth_callbacks: 'omniauth_callbacks'
   }
   root to: "home#index"
+
+  resources :feeds
 end

@@ -11,19 +11,14 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
-class Feed < ApplicationRecord
-  has_many :user_feeds
-
-  validates :url, presence: true
-
-  def self.cache_key(url)
-    "feed-#{Digest::MD5.hexdigest(url)}"
+FactoryBot.define do
+  factory :feed do
+    url { 'https://tvn24.pl/najnowsze.xml' }
+    title { Faker::Book.title }
+    description { Faker::Lorem.paragraph }
   end
 
-  def details
-    rss = Rails.cache.fetch(Feed.cache_key(url), expires: 10.minutes) do
-      HTTParty.get(url).body
-    end
-    Feedjira.parse(rss)
+  trait :invalid do
+    url { Faker::Internet.url }
   end
 end

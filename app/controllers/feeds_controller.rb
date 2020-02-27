@@ -13,7 +13,7 @@ class FeedsController < ApplicationController
   end
 
   def create
-    url = params[:feed][:url]
+    url = feed_params[:url]
     raise Feedjira::NoParserAvailable if url.blank?
 
     feed = Feeds::FeedBuilder.new.call(url)
@@ -34,6 +34,6 @@ class FeedsController < ApplicationController
   end
 
   def feed_params
-    params.require(:new_feed).permit(:url)
+    params.require(:feed).permit(:url)
   end
 end

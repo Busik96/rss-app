@@ -33,8 +33,4 @@ class User < ApplicationRecord
   has_many :feeds, through: :user_feeds
 
   validates :name, presence: true
-
-  def self.from_omniauth(auth)
-    ::Users::UserAuthorization.new.call(auth)
-  end
 end

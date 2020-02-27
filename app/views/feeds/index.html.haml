@@ -1,0 +1,25 @@
+.row.justify-content-center.align-items-center.min-vh-100
+  - if @feeds.present?
+    = render 'sidebar'
+    .col-sm-12.p-4
+      .jumbotron.d-flex.justify-content-beetween
+        %i.fas.fa-arrow-left.fa-3x.m-4.gray
+        %h3.text-center.text-primary
+          Choose from the list of RSSs that you are currently interested in!
+
+  - else
+    .col-sm-12.col-md-6.p-4
+      .jumbotron.text-center
+        %h3
+          You don't have any feeds, but that's no problem!
+        .hr.m-4
+        %h4.text-primary
+          You can change it very easily!
+        %i.fas.fa-arrow-down.fa-3x.m-4.gray
+        = form_for(@new_feed, url: feeds_path) do |f|
+          .input-group
+            = f.text_field :url, placeholder: 'Paste your RSS link...', class: 'form-control'
+            .input-group-append
+              = f.submit 'Add', class: 'btn btn-primary text-white'
+
+

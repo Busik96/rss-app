@@ -1,0 +1,26 @@
+.app {
+  .logo-app {
+    color: #FF0000;
+    font-size: 25px;
+    text-shadow: 2px 2px 1px $gray-500;
+    a {
+      color: #FF0000;
+    }
+  }
+
+  footer {
+    box-shadow: 0px -5px 17px 3px #222222;
+    z-index: 1000;
+  }
+
+  header {
+    box-shadow: 0px 5px 17px 3px #222222;
+    z-index: 1000;
+  }
+
+  .sidebar {
+    box-shadow: 0px 5px 17px 3px #222222;
+    z-index: 1000;
+    background-color: rgba(233, 236, 239, 0.9);
+  }
+}

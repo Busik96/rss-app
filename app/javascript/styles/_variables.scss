@@ -72,7 +72,7 @@ $success:       $green !default;
 $info:          $cyan !default;
 $warning:       $yellow !default;
 $danger:        $red !default;
-$light:         $gray-100 !default;
+$light:         #E2E5E8;
 $dark:          $gray-800 !default;
 
 $theme-colors: () !default;
@@ -99,7 +99,7 @@ $yiq-contrasted-threshold:  150 !default;
 
 // Customize the light and dark text colors for use in our YIQ color contrast function.
 $yiq-text-dark:             $gray-900 !default;
-$yiq-text-light:            $white !default;
+$yiq-text-light:            #E2E5E8;
 
 
 // Options
@@ -731,10 +731,10 @@ $navbar-dark-disabled-color:        rgba($white, .25) !default;
 $navbar-dark-toggler-icon-bg:       str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-dark-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23") !default;
 $navbar-dark-toggler-border-color:  rgba($white, .1) !default;
 
-$navbar-light-color:                rgba($black, .5) !default;
-$navbar-light-hover-color:          rgba($black, .7) !default;
-$navbar-light-active-color:         rgba($black, .9) !default;
-$navbar-light-disabled-color:       rgba($black, .3) !default;
+$navbar-light-color:                #FF0000;
+$navbar-light-hover-color:          #FF0000;
+$navbar-light-active-color:         #FF0000;
+$navbar-light-disabled-color:       #FF0000;
 $navbar-light-toggler-icon-bg:      str-replace(url("data:image/svg+xml,%3csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3e%3cpath stroke='#{$navbar-light-color}' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"), "#", "%23") !default;
 $navbar-light-toggler-border-color: rgba($black, .1) !default;
 
@@ -812,7 +812,7 @@ $pagination-disabled-border-color:  $gray-300 !default;
 
 $jumbotron-padding:                 2rem !default;
 $jumbotron-color:                   null !default;
-$jumbotron-bg:                      $gray-200 !default;
+$jumbotron-bg:                      rgba(233, 236, 239, 0.9);;
 
 
 // Cards

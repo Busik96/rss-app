@@ -15,4 +15,13 @@ class Feed < ApplicationRecord
   has_many :user_feeds
 
   validates :url, presence: true
+
+  def self.cache_key(url)
+    "feed-#{Digest::MD5.hexdigest(url)}"
+  end
+
+  def details
+    rss = HTTParty.get(url).body
+    Feedjira.parse(rss)
+  end
 end

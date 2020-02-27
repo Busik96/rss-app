@@ -1,0 +1,10 @@
+- content_for :sidebar do
+  .sidebar.min-vh-100.text-center
+    %h4.pt-4
+      FEEDS
+    .list-group.p-4
+      - @feeds.each do |feed|
+        = link_to feed.title, feed_path(feed.id),
+          class: 'list-group-item list-group-item-action'
+      = link_to 'Add', new_feed_path,
+        class: 'list-group-item list-group-item-action text-primary'

@@ -7,13 +7,7 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '/home.scss';
-
-
-.center-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+@import '/app.scss';
 
 html, body, main {
   min-height: 100vh;
@@ -23,25 +17,25 @@ body {
   font-family: 'Comic Sans MS';
 }
 
-.logo {
-  color: #FF0000;
-  font-size: 30px;
-  text-shadow: 2px 2px 1px white;
-  a {
-    color: #FF0000;
-    font-size: 30px;
-  }
+.bg-image{
+  background-image: url('../images/home_background.jpg');
+  background-size: cover;
+  background-position: center center;
 }
 
-.external_login_icon {
-  &:hover {
-    text-decoration: none;
-  }
+
+.center-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.divider {
-  margin: 1rem;
-  padding: 0 0.5rem;
-  border-right: 1px solid $gray-600;
-  border-left: 1px solid $gray-600;
+.hr {
+  border-top: 2px solid $gray-500;
 }
+
+.gray {
+  color: $gray-500;
+}
+
+

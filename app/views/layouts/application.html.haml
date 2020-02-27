@@ -11,15 +11,15 @@
     = render 'layouts/header'
     %main.bg-image
       .container-fluid.min-vh-100
-        - if content_for?(:sidebar)
-          .col-3
-            .bg-light
+        .row
+          - if content_for?(:sidebar)
+            .col-3.pl-0
               = yield :sidebar
-          .col-9
-            = render partial: 'layouts/flash', flash: flash
-            = yield
-        - else
-          .col-12
-            = render partial: 'layouts/flash', flash: flash
-            = yield
+            .col-9
+              = render partial: 'layouts/flash', flash: flash
+              = yield
+          - else
+            .col-12
+              = render partial: 'layouts/flash', flash: flash
+              = yield
     = render 'layouts/footer'

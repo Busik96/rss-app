@@ -8,7 +8,7 @@
     = stylesheet_pack_tag 'custom', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body.d-flex.flex-column.home
-    .home-page.no-gutters
+    .bg-image.no-gutters
       .container-fluid
         .row
           .col-12
@@ -25,7 +25,7 @@
                         %i.fas.fa-user-circle.pr-2
                         = current_user.name || current_user.email
                       .dropdown-menu.dropdown-menu-right
-                        = link_to 'Go to app!', root_path , class: 'dropdown-item'
+                        = link_to 'Go to app!', feeds_path , class: 'dropdown-item'
                         %hr/
                         = link_to 'Log out', destroy_user_session_path, method: :delete, class: 'dropdown-item'
                 - else

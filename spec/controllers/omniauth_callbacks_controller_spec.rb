@@ -30,8 +30,8 @@ describe OmniauthCallbacksController, type: :controller do
           expect(current_user).not_to be_nil
         end
 
-        it 'redirect to root_path' do
-          expect(response).to redirect_to(root_path)
+        it 'redirect to feeds_path' do
+          expect(response).to redirect_to(feeds_path)
         end
       end
     end
@@ -49,8 +49,8 @@ describe OmniauthCallbacksController, type: :controller do
           expect(current_user).not_to be_nil
         end
 
-        it 'redirect to root_path' do
-          expect(response).to redirect_to(root_path)
+        it 'redirect to feeds_path' do
+          expect(response).to redirect_to(feeds_path)
         end
       end
     end
@@ -79,7 +79,7 @@ describe OmniauthCallbacksController, type: :controller do
           expect(current_user).not_to be_nil
         end
 
-        it 'redirect to root_path' do
+        it 'redirect to new_user_registration_url' do
           expect(response).to redirect_to(new_user_registration_url)
         end
       end
@@ -98,7 +98,7 @@ describe OmniauthCallbacksController, type: :controller do
           expect(current_user).not_to be_nil
         end
 
-        it 'redirect to root_path' do
+        it 'redirect to new_user_registration_url' do
           expect(response).to redirect_to(new_user_registration_url)
         end
       end

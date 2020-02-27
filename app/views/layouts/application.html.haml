@@ -7,10 +7,19 @@
     %link{href: "favicon/favicon.ico", rel: "icon"}
     = stylesheet_pack_tag 'custom', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-  %body.d-flex.flex-column
+  %body.d-flex.flex-column.app
     = render 'layouts/header'
-    %main
+    %main.bg-image
       .container-fluid.min-vh-100
-        = render partial: 'layouts/flash', flash: flash
-        = yield
+        - if content_for?(:sidebar)
+          .col-3
+            .bg-light
+              = yield :sidebar
+          .col-9
+            = render partial: 'layouts/flash', flash: flash
+            = yield
+        - else
+          .col-12
+            = render partial: 'layouts/flash', flash: flash
+            = yield
     = render 'layouts/footer'

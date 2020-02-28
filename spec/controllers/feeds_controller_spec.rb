@@ -101,6 +101,12 @@ RSpec.describe FeedsController, type: :controller do
 
       context 'with invalid attributes' do
         let(:url) { 'https://facebook.com' }
+        let(:fake_response) { instance_double('fake_response', body: fake_body) }
+        let(:fake_body) { File.read(Rails.root.join('spec', 'support', 'invalid.xml')) }
+
+        before do
+          allow(HTTParty).to receive(:get).and_return(fake_response)
+        end
 
         it 'does not save the new feed' do
           expect { call }.to_not change(Feed, :count)
@@ -114,20 +120,20 @@ RSpec.describe FeedsController, type: :controller do
     end
   end
 
-  # describe 'DELETE feeds#destroy' do
-  #   before do
-  #     sign_in user
-  #   end
-  #   subject(:call) { delete :destroy, params: { id: feed.id } }
+  describe 'DELETE feeds#destroy' do
+    before do
+      sign_in user
+    end
+    subject(:call) { delete :destroy, params: { id: feed.id } }
 
-  #   it 'remove feed from user' do
-  #     expect { call }.to change(user.user_feeds, :count).by(-1)
-  #   end
+    it 'remove feed from user' do
+      expect { call }.to change(user.user_feeds, :count).by(-1)
+    end
 
-  #   it 'redirect to feeds index' do
-  #     call
-  #     expect(response).to redirect_to(feeds_path)
-  #   end
-  # end
+    it 'redirect to feeds index' do
+      call
+      expect(response).to redirect_to(feeds_path)
+    end
+  end
 end
 

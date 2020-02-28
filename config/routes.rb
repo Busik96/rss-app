@@ -5,5 +5,9 @@ Rails.application.routes.draw do
   }
   root to: "home#index"
 
-  resources :feeds
+  resources :feeds do
+    collection do
+      get :settings
+    end
+  end
 end

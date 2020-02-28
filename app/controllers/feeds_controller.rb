@@ -2,6 +2,7 @@
 
 class FeedsController < ApplicationController
   before_action :authenticate_user!
+  before_action :search_feed, only: %i[destroy]
 
   def index
     @feeds = current_user.feeds
@@ -26,7 +27,18 @@ class FeedsController < ApplicationController
     redirect_with_error 'Invalid URL!'
   end
 
+  def destroy
+    @user_feed = current_user.user_feeds.find_by(feed_id: params[:id])
+    @user_feed.destroy
+    flash[:success] = "Feed #{@feed.title} removed correctly"
+    redirect_to feeds_path
+  end
+
   private
+
+  def search_feed
+    @feed = Feed.find(params[:id])
+  end
 
   def redirect_with_error(error)
     flash[:error] = error

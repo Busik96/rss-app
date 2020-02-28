@@ -13,9 +13,9 @@
       .container-fluid.min-vh-100
         .row
           - if content_for?(:sidebar)
-            .col-3.pl-0
+            .col-md-3.pl-0.pr-0
               = yield :sidebar
-            .col-9
+            .col-md-9
               = render partial: 'layouts/flash', flash: flash
               = yield
           - else

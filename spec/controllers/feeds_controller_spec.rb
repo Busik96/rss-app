@@ -29,6 +29,37 @@ RSpec.describe FeedsController, type: :controller do
     end
   end
 
+  describe 'GET feeds#show' do
+    it_behaves_like 'only-for-signed-in', :show, id: 1
+
+    context 'with signed in user' do
+      before do
+        sign_in user
+        allow(HTTParty).to receive(:get).and_return(fake_response)
+      end
+
+      subject(:call) { get :show, params: { id: feed.id } }
+
+      let(:fake_response) { instance_double('fake_response', body: fake_body) }
+      let(:fake_body) { File.read(Rails.root.join('spec', 'support', 'najnowsze.xml')) }
+
+      it 'renders show view' do
+        call
+        expect(response).to render_template('show')
+      end
+
+      it 'assigns feed details to @details' do
+        call
+        expect(assigns(:details)).to be_a(Feedjira::Parser::RSS)
+      end
+
+      it 'assigns all feed entries to @entries' do
+        call
+        expect(assigns(:entries).first).to be_a(EntryDecorator)
+      end
+    end
+  end
+
   describe 'GET feeds#new' do
     it_behaves_like 'only-for-signed-in', :new
 

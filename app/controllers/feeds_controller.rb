@@ -2,11 +2,20 @@
 
 class FeedsController < ApplicationController
   before_action :authenticate_user!
-  before_action :search_feed, only: %i[destroy]
+  before_action :search_feed, only: %i[destroy show]
+  before_action :user_feeds, only: %i[index show]
 
   def index
     @feeds = current_user.feeds
     @new_feed = Feed.new
+  end
+
+  def show
+    @details = @feed.details
+    @entries = []
+    @details.entries.each do |entry|
+      @entries << EntryDecorator.new(entry)
+    end
   end
 
   def new
@@ -35,6 +44,10 @@ class FeedsController < ApplicationController
   end
 
   private
+
+  def user_feeds
+    @feeds = current_user.feeds
+  end
 
   def search_feed
     @feed = Feed.find(params[:id])

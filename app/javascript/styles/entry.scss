@@ -1,0 +1,22 @@
+.entry {
+
+  .entry-head {
+    color: #FF0000;
+    text-shadow: 1px 1px 2px $gray-800;
+    font-style: italic;
+    font-weight: bold;
+  }
+
+  .entry-body {
+
+    font-size: 80%;
+
+    img {
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0px 2px 5px 2px #222222;
+      z-index: 1000;
+      margin: 0.5rem;
+    }
+  }
+}

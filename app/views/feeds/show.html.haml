@@ -1,0 +1,33 @@
+.row.justify-content-center.align-items-center
+  = render 'sidebar'
+  .col-sm-12.p-3
+    - @entries.each do |entry|
+      .jumbotron.entry.p-3
+        .row.entry-head
+          .col-12
+            = entry.title
+        .hr.m-3
+        .row.entry-body
+          - if entry.img.present?
+            .col-md-3.center-content
+              = entry.img.html_safe
+            .col-md-9
+              = entry.description
+              .row.pt-3
+                .col-6
+                  %small
+                    = entry.published
+                .col-6.text-right
+                  = link_to 'more' , entry.url, target: :_blank, class: 'btn btn-primary text-white'
+          - else
+            .col-12
+              = entry.description
+              .row.pt-3
+                .col-6
+                  %small
+                    = entry.published
+                .col-6.text-right
+                  = link_to 'more' , entry.url, target: :_blank, class: 'btn btn-primary text-white'
+
+
+

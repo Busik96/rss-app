@@ -8,6 +8,7 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '/home.scss';
 @import '/app.scss';
+@import '/entry.scss';
 
 html, body, main {
   min-height: 100vh;

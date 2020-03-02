@@ -3,10 +3,9 @@
 class FeedsController < ApplicationController
   before_action :authenticate_user!
   before_action :search_feed, only: %i[destroy show]
-  before_action :user_feeds, only: %i[index show]
+  before_action :user_feeds, only: %i[index show settings]
 
   def index
-    @feeds = current_user.feeds
     @new_feed = Feed.new
   end
 
@@ -42,6 +41,8 @@ class FeedsController < ApplicationController
     flash[:success] = "Feed #{@feed.title} removed correctly"
     redirect_to feeds_path
   end
+
+  def settings; end
 
   private
 

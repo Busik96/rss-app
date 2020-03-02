@@ -1,0 +1,17 @@
+.row.justify-content-center.align-items-center.min-vh-100
+  .col-12
+    .jumbotron.text-center
+      %table.table
+        %thead
+          %tr
+            %th{:scope => "col"} RSS title
+            %th{:scope => "col"} Notify with email
+            %th{:scope => "col"} Actions
+        %tbody
+          - @feeds.each do |feed|
+            %tr
+              %th{:scope => "row"}
+                = link_to feed.title, feed_path(feed.id)
+              %td ...
+              %td
+                = link_to '',feed_path(feed), method: :delete, class: 'btn btn-primary fas fa-trash text-white', method: :delete, data: { confirm: 'Are u sure?' }

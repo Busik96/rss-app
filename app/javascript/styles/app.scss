@@ -23,4 +23,11 @@
     z-index: 1000;
     background-color: rgba(233, 236, 239, 0.9);
   }
+
+  .feeds-container {
+    @include media-breakpoint-up(md) {
+      height: 90vh;
+      overflow: scroll;
+    }
+  }
 }

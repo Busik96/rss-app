@@ -11,5 +11,5 @@
 #   end
 # end
 #
-# Crono.perform(TestJob).every 2.days, at: '15:30'
-#
+Crono.perform(ScheduleDailyJob).every day, at: '8:30'
+

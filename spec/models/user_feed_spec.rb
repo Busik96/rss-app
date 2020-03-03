@@ -5,6 +5,7 @@
 # Table name: user_feeds
 #
 #  id         :bigint           not null, primary key
+#  notify     :boolean
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  feed_id    :bigint           not null

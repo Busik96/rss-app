@@ -1,0 +1,17 @@
+%h3
+  Hello
+  = @user.name
+%h5
+  Here are your chosen feeds, have a nice reading!
+- @feeds.each do |feed|
+  - feed.details.entries.each do |entry|
+    %h5
+      = entry.title
+    %br
+      %p
+        = entry.summary.html_safe
+        %br
+        = entry.published
+        %br
+        = link_to 'more' , entry.url, target: :_blank
+

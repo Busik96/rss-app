@@ -25,6 +25,11 @@ body {
   background-position: center center;
 }
 
+.dropdown-toggle {
+  &:hover {
+    cursor: pointer;
+  }
+}
 
 .center-content {
   display: flex;

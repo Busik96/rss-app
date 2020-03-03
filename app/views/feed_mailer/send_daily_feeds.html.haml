@@ -1,17 +1,25 @@
-%h3
-  Hello
-  = @user.name
-%h5
-  Here are your chosen feeds, have a nice reading!
-- @feeds.each do |feed|
-  - feed.details.entries.each do |entry|
-    %h5
-      = entry.title
-    %br
-      %p
-        = entry.summary.html_safe
-        %br
-        = entry.published
-        %br
-        = link_to 'more' , entry.url, target: :_blank
+.entry-head
+  %h2.mailer-invitation
+    Hello
+    = @user.name
+  %h3
+    Here are your chosen feeds, have a nice reading!
+.entry-body
+  - @feeds.each do |feed|
+    .center-content
+      %hr
+    %h1.text-center
+      = feed.title
+    - feed.details.entries.each do |entry|
+      .center-content
+        .entry
+          %h3
+            = entry.title
+          .content
+            = entry.summary.html_safe
+          .details
+            .left
+              = entry.published
+            .right
+              = link_to 'more' , entry.url, target: :_blank, class: 'btn'
 

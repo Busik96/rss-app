@@ -11,23 +11,21 @@
           - if entry.img.present?
             .col-md-3.center-content
               = entry.img.html_safe
-            .col-md-9
-              = entry.description
-              .row.pt-3
-                .col-6
-                  %small
-                    = entry.published
-                .col-6.text-right
-                  = link_to 'more' , entry.url, target: :_blank, class: 'btn btn-primary text-white'
+            .col-md-9.d-flex.justify-content-between.flex-column
+              .entry-description
+                = entry.description
+              .d-flex.justify-content-between.pt-3
+                %small
+                  = entry.published
+                = link_to 'more' , entry.url, target: :_blank, class: 'btn btn-primary text-white'
           - else
             .col-12
-              = entry.description
-              .row.pt-3
-                .col-6
-                  %small
-                    = entry.published
-                .col-6.text-right
-                  = link_to 'more' , entry.url, target: :_blank, class: 'btn btn-primary text-white'
+              .entry-description
+                = entry.description
+              .justify-content-beetween.align-self-end.pt-3
+                %small
+                  = entry.published
+                = link_to 'more' , entry.url, target: :_blank, class: 'btn btn-primary text-white'
 
 
 

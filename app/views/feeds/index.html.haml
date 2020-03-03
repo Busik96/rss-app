@@ -2,10 +2,13 @@
   - if @feeds.present?
     = render 'sidebar'
     .col-12.p-4
-      .jumbotron.d-flex.justify-content-beetween
-        %i.fas.fa-arrow-left.fa-3x.m-4.gray
-        %h3.text-center.text-primary
-          Choose from the list of RSSs that you are currently interested in!
+      .jumbotron
+        .row.align-items-center
+          .col-3
+            %i.fas.fa-arrow-left.fa-3x.m-4.gray
+          .col-9
+            %h3.text-primary
+              Choose from the list of RSSs that you are currently interested in!
 
   - else
     .col-sm-12.col-md-6.p-4

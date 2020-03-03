@@ -2,14 +2,15 @@
 
   .entry-head {
     color: #FF0000;
-    text-shadow: 1px 1px 2px $gray-800;
+    text-shadow: 1px 1px black;
     font-style: italic;
     font-weight: bold;
+    font-size: 110%;
   }
 
   .entry-body {
 
-    font-size: 80%;
+    font-size: 90%;
 
     img {
       width: 100%;

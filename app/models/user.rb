@@ -30,7 +30,9 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[facebook github]
   has_many :authorizations, dependent: :delete_all
   has_many :user_feeds
+  has_many :daily_user_feeds, -> { where(notify: true) }, class_name: 'UserFeed'
   has_many :feeds, through: :user_feeds
+  has_many :daily_feeds, through: :daily_user_feeds, class_name: 'Feed', source: :feed
 
   validates :name, presence: true
 end

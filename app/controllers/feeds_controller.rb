@@ -2,19 +2,15 @@
 
 class FeedsController < ApplicationController
   before_action :authenticate_user!
-  before_action :search_feed, only: %i[destroy show]
-  before_action :user_feeds, only: %i[index show settings]
+  before_action :preload_feeds, only: %i[index show]
 
   def index
     @new_feed = Feed.new
   end
 
   def show
-    @details = @feed.details
-    @entries = []
-    @details.entries.each do |entry|
-      @entries << EntryDecorator.new(entry)
-    end
+    @feed = Feed.find(params[:id])
+    @entries = @feed.details.entries.map { |entry| EntryDecorator.new(entry) }
   end
 
   def new
@@ -36,22 +32,25 @@ class FeedsController < ApplicationController
   end
 
   def destroy
-    @user_feed = current_user.user_feeds.find_by(feed_id: params[:id])
-    @user_feed.destroy
-    flash[:success] = "Feed #{@feed.title} removed correctly"
+    current_user.user_feeds.find(params[:id]).destroy
+    flash[:success] = 'Feed removed correctly'
     redirect_to feeds_path
   end
 
-  def settings; end
+  def settings
+    @user_feeds = current_user.user_feeds.includes(:feed)
+  end
+
+  def notify
+    user_feed = current_user.user_feeds.find(params[:id])
+    user_feed.update(notify: !user_feed.notify)
+    redirect_to settings_feeds_path, notice: 'Saved!'
+  end
 
   private
 
-  def user_feeds
-    @feeds = current_user.feeds
-  end
-
-  def search_feed
-    @feed = Feed.find(params[:id])
+  def preload_feeds
+    @feeds = current_user.feeds.order(created_at: :asc)
   end
 
   def redirect_with_error(error)

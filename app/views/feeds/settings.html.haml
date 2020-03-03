@@ -8,10 +8,11 @@
             %th{:scope => "col"} Notify with email
             %th{:scope => "col"} Actions
         %tbody
-          - @feeds.each do |feed|
+          - @user_feeds.each do |user_feed|
             %tr
               %th{:scope => "row"}
-                = link_to feed.title, feed_path(feed.id)
-              %td ...
+                = link_to user_feed.feed.title, feed_path(user_feed.feed_id)
               %td
-                = link_to '',feed_path(feed), method: :delete, class: 'btn btn-primary fas fa-trash text-white', method: :delete, data: { confirm: 'Are u sure?' }
+                = check_box_tag "notify_#{user_feed.id}-#{rand(9999)}", user_feed.id, user_feed.notify, data: { remote: true, url: notify_feed_path(user_feed.id), method: "patch" }
+              %td
+                = link_to '',feed_path(user_feed.id), method: :delete, class: 'btn btn-primary fas fa-trash text-white', method: :delete, data: { confirm: 'Are u sure?' }

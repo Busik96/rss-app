@@ -3,7 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe FeedsController, type: :controller do
-  let(:user) { create :user, feeds: [feed] }
+  let(:user) { create :user }
+  let!(:user_feed) { user.user_feeds.create(feed_id: feed.id) }
   let(:feed) { create :feed }
 
   describe 'GET feeds#index' do
@@ -46,11 +47,6 @@ RSpec.describe FeedsController, type: :controller do
       it 'renders show view' do
         call
         expect(response).to render_template('show')
-      end
-
-      it 'assigns feed details to @details' do
-        call
-        expect(assigns(:details)).to be_a(Feedjira::Parser::RSS)
       end
 
       it 'assigns all feed entries to @entries' do
@@ -166,5 +162,39 @@ RSpec.describe FeedsController, type: :controller do
       expect(response).to redirect_to(feeds_path)
     end
   end
-end
 
+  describe 'GET feeds#settings' do
+    it_behaves_like 'only-for-signed-in', :settings
+
+    context 'with signed in user' do
+      before do
+        sign_in user
+        get :settings
+      end
+
+      it 'renders index view' do
+        expect(response).to render_template('settings')
+      end
+
+      it 'assigns all current user feeds to @feeds' do
+        expect(assigns(:user_feeds).to_a).to eq([user_feed])
+      end
+    end
+  end
+
+  describe 'PATCH feeds#notify' do
+    before do
+      sign_in user
+    end
+    subject(:call) { patch :notify, params: { id: user_feed.id } }
+
+    it 'changes notify boolean value' do
+      expect { call }.to change { user_feed.reload.notify }
+    end
+
+    it 'redirect to feeds settings' do
+      call
+      expect(response).to redirect_to(settings_feeds_path)
+    end
+  end
+end

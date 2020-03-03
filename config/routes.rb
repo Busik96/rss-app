@@ -9,5 +9,8 @@ Rails.application.routes.draw do
     collection do
       get :settings
     end
+    member do
+      patch :notify
+    end
   end
 end

@@ -21,7 +21,7 @@ RSpec.describe EntryDecorator do
 
   describe '#img' do
     it 'returns entry img' do
-      expect(entry.img).to include("tvn24.pl/najnowsze/cdn-zdjecie-bq8pzi-prokuratura-chce-postawiczarzut-karny-sedzi")
+      expect(entry.img).to include('tvn24.pl/najnowsze/cdn-zdjecie-bq8pzi-prokuratura-chce-postawiczarzut-karny-sedzi')
     end
   end
 

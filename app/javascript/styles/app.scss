@@ -30,4 +30,12 @@
       overflow: scroll;
     }
   }
+
+  .table thead th, .table tbody td, .table th {
+    border: none;
+  }
+
+  thead {
+    border-bottom: 2px solid $gray-800;
+  }
 }

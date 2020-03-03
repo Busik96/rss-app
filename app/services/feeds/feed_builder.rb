@@ -20,6 +20,8 @@ module Feeds
         title: details.title,
         description: details.description
       )
+    rescue NoMethodError
+      raise Feedjira::NoParserAvailable
     end
 
     def load_rss_body(url)

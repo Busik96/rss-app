@@ -14,7 +14,7 @@
       label: "Confirm your new password",
       required: true,
       input_html: { autocomplete: "new-password" }
-  .form-actions
+  .form-actions.text-center
     = f.button :submit, "Change my password", class: 'btn btn-primary text-center'
-.text-center
+.text-center.mt-2
   = render "devise/shared/links"
